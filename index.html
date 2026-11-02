@@ -121,7 +121,7 @@
 
                 <!-- Executive Summary -->
                 <p class="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-3xl mx-auto">
-                    13+ years in enterprise software testing, including 4 years as <strong>Software QA Manager & Chief QA Champion at Infor</strong>[cite: 1]. Specialist in building multi-site QA organizations, implementing 4-Stage Quality Gate governance, converting manual testers to automation engineers, and integrating human-in-the-loop AI testing frameworks.
+                    13+ years in enterprise software testing, including 4 years as <strong>Software QA Manager & Chief QA Champion at Infor</strong>[cite: 1, 9]. Specialist in building multi-site QA organizations, implementing 4-Stage Quality Gate governance, converting manual testers to automation engineers, and integrating human-in-the-loop AI testing frameworks[cite: 1, 9].
                 </p>
 
                 <!-- Quick Stats Banner -->
@@ -245,7 +245,7 @@
                 <div class="text-teal-400 text-xs font-bold uppercase tracking-wider mb-2">Test Governance Blueprint</div>
                 <h2 class="text-3xl font-bold text-white sm:text-4xl">4-Stage Quality Gate Framework</h2>
                 <p class="text-slate-400 mt-2">
-                    A blueprint model designed to be tailored and implemented in my next leadership role—built on proven governance practices I successfully established and executed at <strong>Infor</strong>[cite: 1] and <strong>Accenture</strong>[cite: 1].
+                    A structured model bridging shift-left requirements analysis, automated CI/CD gating, cross-functional risk UAT, and post-deployment governance—built on proven enterprise practices executed at <strong>Infor</strong>[cite: 1, 9] and <strong>Accenture</strong>[cite: 1, 9].
                 </p>
             </div>
 
@@ -700,51 +700,71 @@
             }
         ];
 
-        // FRAMEWORK STAGE DATA
+        // FRAMEWORK STAGE DATA WITH DETAILED ENTRY & EXIT CRITERIA
         const stageData = {
             1: {
-                title: "Stage 01: Requirements & BDD Test Design",
+                title: "Gate 01: Requirements & BDD Design",
                 tagline: "Shift-Left Quality & Requirement Gap Analysis",
-                points: [
-                    "Static requirement reviews and BDD Gherkin scenario generation.",
-                    "Requirements Traceability Matrix (RTM) setup to map specs to tests.",
-                    "Early risk identification for enterprise finance, access-control, and audit workflows.",
-                    "Human-in-the-Loop verification for AI-generated test scenarios."
+                entry: [
+                    "Raw user stories, epics, and PRDs submitted by Product Management into sprint backlog.",
+                    "Access to system architecture diagrams, UI/UX wireframes, and API interface specifications.",
+                    "Definition of Ready (DoR) checklist established and agreed upon by the agile team."
                 ],
-                metric: "Prevents defects upfront during Agile sprint grooming cycles."
+                exit: [
+                    "Static requirement reviews and gap analysis completed to identify edge cases and logic flaws prior to development.",
+                    "Requirements Traceability Matrix (RTM) initialized and mapped from business specs to test scenarios.",
+                    "BDD Gherkin scenarios written and collaboratively reviewed by Product Owners, Developers, and QA.",
+                    "Human-in-the-Loop (HITL) verification completed for any AI-generated test scenarios or test blueprints."
+                ],
+                metric: "Focuses on preventing defects upfront during Agile sprint grooming cycles."
             },
             2: {
-                title: "Stage 02: SIT & CI/CD Pipeline Gates",
-                tagline: "Automated Build Validation & API Verification",
-                points: [
-                    "Automated pull request checks in Jenkins / GitLab / GitHub Actions.",
-                    "REST API and Enterprise API Gateway validation suites.",
-                    "Automated failure categorization (separating data/environment issues from genuine defects).",
-                    "Parallel build sanity checks executed automatically on commit."
+                title: "Gate 02: SIT & CI/CD Pipeline Gates",
+                tagline: "Automated Governance & Build Validation",
+                entry: [
+                    "Feature code committed to version control with passing developer unit tests.",
+                    "Minimum static code analysis thresholds met (e.g., SonarQube quality gate passing with zero blocker code smells or security vulnerabilities).",
+                    "Automated pipeline triggers configured for pull requests and main branch merges."
                 ],
-                metric: "Delivers immediate quality feedback to dev teams within minutes."
+                exit: [
+                    "Automated API validation and contract testing executed successfully per commit.",
+                    "Build sanity checks and integration test suites passed without critical failures.",
+                    "Automated test execution reports successfully published to CI/CD dashboards (Jenkins / GitHub Actions).",
+                    "Automated exit criteria evaluated: zero unhandled compilation errors, broken builds, or regression blockers before merging."
+                ],
+                metric: "Embeds automated build validation and quality gates directly into the developer workflow."
             },
             3: {
-                title: "Stage 03: E2E Regression & Risk-Based UAT",
-                tagline: "Comprehensive Multi-Tenant & Enterprise Validation",
-                points: [
-                    "Scalable automated regression test suites achieving high coverage.",
-                    "End-to-End multi-tenant and cloud environment integration testing.",
-                    "Data integrity algorithms and migration validation protocols.",
-                    "User Acceptance Testing (UAT) support and stakeholder sign-off frameworks."
+                title: "Gate 03: E2E Regression & Risk UAT",
+                tagline: "Cross-Functional Validation & Release Readiness",
+                entry: [
+                    "Successful deployment of the integrated build to the staging/pre-production environment.",
+                    "Gate 02 automated verification sign-off approved.",
+                    "Risk-based test plan frozen, prioritizing critical financial, access-control, and audit-trail workflows."
                 ],
-                metric: "Ensures complete release stability across enterprise deployments."
+                exit: [
+                    "Cross-functional end-to-end regression automation suites executed across all target configurations and multi-tenant environments.",
+                    "Audit-trail and security compliance workflows verified.",
+                    "Risk-based UAT executed and formally signed off by business stakeholders and Product Managers.",
+                    "Zero P1 (Critical) or P2 (High) open defects remaining; formal Go/No-Go release readiness meeting successfully conducted."
+                ],
+                metric: "Ensures comprehensive end-to-end validation and secures business stakeholder sign-off."
             },
             4: {
-                title: "Stage 04: Post-Deploy Smoke & Executive CAPA",
-                tagline: "Production Guardrails & RCA Governance",
-                points: [
-                    "Automated production smoke testing post-deployment.",
-                    "Executive stability dashboard reporting for VP & Director forums.",
-                    "Root Cause Analysis (RCA) and CAPA protocols for any detected defects.",
-                    "Continuous feedback loop into sprint backlog for continuous improvement."
+                title: "Gate 04: Post-Deploy Smoke & CAPA",
+                tagline: "Production Verification & Continuous Improvement",
+                entry: [
+                    "Successful production deployment completed and signed off by Release Management.",
+                    "Production monitoring and observability tools (Datadog, New Relic, Splunk) active with healthy baseline metrics.",
+                    "Incident response and CAPA support teams on standby."
                 ],
-                metric: "Maintains zero-delay release cadence with zero P1 production blockages."
+                exit: [
+                    "Production smoke verification successfully executed to validate core user journeys and system stability.",
+                    "Executive dashboard release report published, summarizing test coverage, defect leakage, and deployment health metrics.",
+                    "Root Cause Analysis (RCA) initiated for any post-release escape anomalies; CAPA protocols enacted if necessary.",
+                    "Retrospective insights fed back into Gate 01 to continuously optimize test coverage and automation frameworks."
+                ],
+                metric: "Drives live production verification, executive release reporting, and CAPA feedback loops."
             }
         };
 
@@ -831,7 +851,7 @@
             }
         }
 
-        // SHOW STAGE DETAILS IN FRAMEWORK WITH SMOOTH SCROLL
+        // SHOW STAGE DETAILS IN FRAMEWORK WITH ENTRY & EXIT CRITERIA
         function showStageDetails(stageNum) {
             const data = stageData[stageNum];
             const box = document.getElementById('stage-detail-box');
@@ -846,31 +866,54 @@
                 }
             }
 
-            // Render detail contents
+            // Render detail contents with Entry and Exit Criteria
             box.innerHTML = `
-                <div class="space-y-4 animate-fade-in">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                <div class="space-y-6 animate-fade-in">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
                         <div>
                             <h3 class="text-xl font-bold text-white">${data.title}</h3>
-                            <p class="text-xs text-sky-400 font-medium">${data.tagline}</p>
+                            <p class="text-xs text-sky-400 font-medium mt-0.5">${data.tagline}</p>
                         </div>
                         <span class="text-xs px-3 py-1.5 rounded-lg bg-teal-500/10 text-teal-300 border border-teal-500/20 font-semibold self-start sm:self-auto">
                             ${data.metric}
                         </span>
                     </div>
 
-                    <div class="grid sm:grid-cols-2 gap-3 pt-2">
-                        ${data.points.map(point => `
-                            <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-xl border border-slate-800 text-xs text-slate-300">
-                                <i class="fa-solid fa-shield-check text-sky-400 mt-0.5 shrink-0"></i>
-                                <span>${point}</span>
+                    <div class="grid md:grid-cols-2 gap-6 pt-1">
+                        <!-- Entry Criteria Column -->
+                        <div class="space-y-3 bg-slate-950/60 p-4 rounded-xl border border-sky-500/20">
+                            <div class="flex items-center gap-2 text-sky-400 font-bold text-xs uppercase tracking-wider">
+                                <i class="fa-solid fa-right-to-bracket text-sm"></i> Entry Criteria
                             </div>
-                        `).join('')}
+                            <ul class="space-y-2.5 text-xs text-slate-300">
+                                ${data.entry.map(item => `
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-circle-arrow-right text-sky-400 mt-0.5 shrink-0"></i>
+                                        <span>${item}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <!-- Exit Criteria Column -->
+                        <div class="space-y-3 bg-slate-950/60 p-4 rounded-xl border border-teal-500/20">
+                            <div class="flex items-center gap-2 text-teal-400 font-bold text-xs uppercase tracking-wider">
+                                <i class="fa-solid fa-right-from-bracket text-sm"></i> Exit Criteria
+                            </div>
+                            <ul class="space-y-2.5 text-xs text-slate-300">
+                                ${data.exit.map(item => `
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-circle-check text-teal-400 mt-0.5 shrink-0"></i>
+                                        <span>${item}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             `;
 
-            // Smooth scroll down to the criteria detail box so the user immediately sees the update
+            // Smooth scroll down to the criteria detail box
             box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
